@@ -1,0 +1,572 @@
+data.aws_vpc.default: Reading...
+data.aws_iam_policy_document.trust[0]: Reading...
+data.aws_caller_identity.current: Reading...
+data.aws_iam_policy_document.trust[0]: Read complete after 0s [id=2851119427]
+data.aws_caller_identity.current: Read complete after 1s [id=715010567089]
+data.aws_vpc.default: Read complete after 3s [id=vpc-01685c4ecd05781cd]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # data.aws_iam_policy_document.app_access[0] will be read during apply
+  # (config refers to values not yet known)
+ <= data "aws_iam_policy_document" "app_access" {
+      + id            = (known after apply)
+      + json          = (known after apply)
+      + minified_json = (known after apply)
+
+      + statement {
+          + actions   = [
+              + "dynamodb:GetItem",
+              + "dynamodb:PutItem",
+              + "dynamodb:Query",
+            ]
+          + effect    = "Allow"
+          + resources = [
+              + (known after apply),
+            ]
+          + sid       = "DynamoDBTable"
+        }
+      + statement {
+          + actions   = [
+              + "logs:CreateLogStream",
+              + "logs:PutLogEvents",
+            ]
+          + effect    = "Allow"
+          + resources = [
+              + (known after apply),
+              + (known after apply),
+            ]
+          + sid       = "LogsWrite"
+        }
+      + statement {
+          + actions   = [
+              + "s3:ListBucket",
+            ]
+          + effect    = "Allow"
+          + resources = [
+              + (known after apply),
+            ]
+          + sid       = "S3List"
+        }
+      + statement {
+          + actions   = [
+              + "s3:GetObject",
+              + "s3:PutObject",
+            ]
+          + effect    = "Allow"
+          + resources = [
+              + (known after apply),
+            ]
+          + sid       = "S3Objects"
+        }
+      + statement {
+          + actions   = [
+              + "ssm:GetParameter",
+              + "ssm:GetParameters",
+              + "ssm:GetParametersByPath",
+            ]
+          + effect    = "Allow"
+          + resources = [
+              + "arn:aws:ssm:ap-southeast-2:715010567089:parameter/adnan-tf-assignment/staging/*",
+            ]
+          + sid       = "SSMRead"
+        }
+    }
+
+  # aws_cloudwatch_log_group.app["app"] will be created
+  + resource "aws_cloudwatch_log_group" "app" {
+      + arn               = (known after apply)
+      + id                = (known after apply)
+      + log_group_class   = (known after apply)
+      + name              = "bjit-adnan-tf-assignment-stg-app-logs-apse2"
+      + name_prefix       = (known after apply)
+      + retention_in_days = 14
+      + skip_destroy      = false
+      + tags              = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all          = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+    }
+
+  # aws_cloudwatch_log_group.app["worker"] will be created
+  + resource "aws_cloudwatch_log_group" "app" {
+      + arn               = (known after apply)
+      + id                = (known after apply)
+      + log_group_class   = (known after apply)
+      + name              = "bjit-adnan-tf-assignment-stg-worker-logs-apse2"
+      + name_prefix       = (known after apply)
+      + retention_in_days = 14
+      + skip_destroy      = false
+      + tags              = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all          = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+    }
+
+  # aws_dynamodb_table.config[0] will be created
+  + resource "aws_dynamodb_table" "config" {
+      + arn              = (known after apply)
+      + billing_mode     = "PAY_PER_REQUEST"
+      + hash_key         = "id"
+      + id               = (known after apply)
+      + name             = "bjit-adnan-tf-assignment-stg-config-table-apse2"
+      + read_capacity    = (known after apply)
+      + stream_arn       = (known after apply)
+      + stream_label     = (known after apply)
+      + stream_view_type = (known after apply)
+      + tags             = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Name"        = "bjit-adnan-tf-assignment-stg-config-table-apse2"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all         = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Name"        = "bjit-adnan-tf-assignment-stg-config-table-apse2"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + write_capacity   = (known after apply)
+
+      + attribute {
+          + name = "id"
+          + type = "S"
+        }
+
+      + point_in_time_recovery (known after apply)
+
+      + server_side_encryption (known after apply)
+
+      + ttl (known after apply)
+    }
+
+  # aws_iam_policy.app[0] will be created
+  + resource "aws_iam_policy" "app" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + id               = (known after apply)
+      + name             = "bjit-adnan-tf-assignment-stg-app-policy-apse2"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = (known after apply)
+      + policy_id        = (known after apply)
+      + tags             = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Name"        = "bjit-adnan-tf-assignment-stg-app-policy-apse2"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all         = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Name"        = "bjit-adnan-tf-assignment-stg-app-policy-apse2"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+    }
+
+  # aws_iam_role.app[0] will be created
+  + resource "aws_iam_role" "app" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "bjit-adnan-tf-assignment-stg-app-role-apse2"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Name"        = "bjit-adnan-tf-assignment-stg-app-role-apse2"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all              = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Name"        = "bjit-adnan-tf-assignment-stg-app-role-apse2"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role_policy_attachment.app[0] will be created
+  + resource "aws_iam_role_policy_attachment" "app" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "bjit-adnan-tf-assignment-stg-app-role-apse2"
+    }
+
+  # aws_s3_bucket.app[0] will be created
+  + resource "aws_s3_bucket" "app" {
+      + acceleration_status         = (known after apply)
+      + acl                         = (known after apply)
+      + arn                         = (known after apply)
+      + bucket                      = "bjit-adnan-tf-assignment-stg-app-bucket-apse2"
+      + bucket_domain_name          = (known after apply)
+      + bucket_prefix               = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = true
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + object_lock_enabled         = (known after apply)
+      + policy                      = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags                        = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Name"        = "bjit-adnan-tf-assignment-stg-app-bucket-apse2"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all                    = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Name"        = "bjit-adnan-tf-assignment-stg-app-bucket-apse2"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + cors_rule (known after apply)
+
+      + grant (known after apply)
+
+      + lifecycle_rule (known after apply)
+
+      + logging (known after apply)
+
+      + object_lock_configuration (known after apply)
+
+      + replication_configuration (known after apply)
+
+      + server_side_encryption_configuration (known after apply)
+
+      + versioning (known after apply)
+
+      + website (known after apply)
+    }
+
+  # aws_s3_bucket_lifecycle_configuration.app[0] will be created
+  + resource "aws_s3_bucket_lifecycle_configuration" "app" {
+      + bucket                                 = (known after apply)
+      + expected_bucket_owner                  = (known after apply)
+      + id                                     = (known after apply)
+      + transition_default_minimum_object_size = "all_storage_classes_128K"
+
+      + rule {
+          + id     = "expire-old-objects"
+          + status = "Enabled"
+            # (1 unchanged attribute hidden)
+
+          + expiration {
+              + days                         = 30
+              + expired_object_delete_marker = false
+            }
+
+          + filter {
+                # (1 unchanged attribute hidden)
+            }
+
+          + noncurrent_version_expiration {
+              + noncurrent_days = 30
+            }
+        }
+    }
+
+  # aws_s3_bucket_ownership_controls.app will be created
+  + resource "aws_s3_bucket_ownership_controls" "app" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+
+      + rule {
+          + object_ownership = "BucketOwnerEnforced"
+        }
+    }
+
+  # aws_s3_bucket_public_access_block.app will be created
+  + resource "aws_s3_bucket_public_access_block" "app" {
+      + block_public_acls       = true
+      + block_public_policy     = true
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = true
+      + restrict_public_buckets = true
+    }
+
+  # aws_s3_bucket_server_side_encryption_configuration.app will be created
+  + resource "aws_s3_bucket_server_side_encryption_configuration" "app" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+
+      + rule {
+          + apply_server_side_encryption_by_default {
+              + sse_algorithm     = "AES256"
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # aws_s3_bucket_versioning.app[0] will be created
+  + resource "aws_s3_bucket_versioning" "app" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+
+      + versioning_configuration {
+          + mfa_delete = (known after apply)
+          + status     = "Enabled"
+        }
+    }
+
+  # aws_security_group.app will be created
+  + resource "aws_security_group" "app" {
+      + arn                    = (known after apply)
+      + description            = "Application security group (staging)"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "10.0.0.0/16",
+                ]
+              + description      = "Allow TCP 443 from allowed CIDR blocks"
+              + from_port        = 443
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 443
+            },
+          + {
+              + cidr_blocks      = [
+                  + "10.0.0.0/16",
+                ]
+              + description      = "Allow TCP 80 from allowed CIDR blocks"
+              + from_port        = 80
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 80
+            },
+        ]
+      + name                   = "bjit-adnan-tf-assignment-stg-app-sg-apse2"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Name"        = "bjit-adnan-tf-assignment-stg-app-sg-apse2"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all               = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Name"        = "bjit-adnan-tf-assignment-stg-app-sg-apse2"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + vpc_id                 = "vpc-01685c4ecd05781cd"
+    }
+
+  # aws_ssm_parameter.app["app_name"] will be created
+  + resource "aws_ssm_parameter" "app" {
+      + arn            = (known after apply)
+      + data_type      = (known after apply)
+      + has_value_wo   = (known after apply)
+      + id             = (known after apply)
+      + insecure_value = (known after apply)
+      + key_id         = (known after apply)
+      + name           = "/adnan-tf-assignment/staging/app_name"
+      + tags           = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all       = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tier           = "Standard"
+      + type           = "String"
+      + value          = (sensitive value)
+      + value_wo       = (write-only attribute)
+      + version        = (known after apply)
+    }
+
+  # aws_ssm_parameter.app["feature_flag"] will be created
+  + resource "aws_ssm_parameter" "app" {
+      + arn            = (known after apply)
+      + data_type      = (known after apply)
+      + has_value_wo   = (known after apply)
+      + id             = (known after apply)
+      + insecure_value = (known after apply)
+      + key_id         = (known after apply)
+      + name           = "/adnan-tf-assignment/staging/feature_flag"
+      + tags           = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all       = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tier           = "Standard"
+      + type           = "String"
+      + value          = (sensitive value)
+      + value_wo       = (write-only attribute)
+      + version        = (known after apply)
+    }
+
+  # aws_ssm_parameter.app["log_level"] will be created
+  + resource "aws_ssm_parameter" "app" {
+      + arn            = (known after apply)
+      + data_type      = (known after apply)
+      + has_value_wo   = (known after apply)
+      + id             = (known after apply)
+      + insecure_value = (known after apply)
+      + key_id         = (known after apply)
+      + name           = "/adnan-tf-assignment/staging/log_level"
+      + tags           = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all       = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tier           = "Standard"
+      + type           = "String"
+      + value          = (sensitive value)
+      + value_wo       = (write-only attribute)
+      + version        = (known after apply)
+    }
+
+Plan: 16 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + dynamodb_table_arn  = (known after apply)
+  + dynamodb_table_name = "bjit-adnan-tf-assignment-stg-config-table-apse2"
+  + environment         = "staging"
+  + iam_role_arn        = (known after apply)
+  + iam_role_name       = "bjit-adnan-tf-assignment-stg-app-role-apse2"
+  + log_group_names     = {
+      + app    = "bjit-adnan-tf-assignment-stg-app-logs-apse2"
+      + worker = "bjit-adnan-tf-assignment-stg-worker-logs-apse2"
+    }
+  + name_prefix         = "bjit-adnan-tf-assignment-stg"
+  + s3_bucket_arn       = (known after apply)
+  + s3_bucket_name      = (known after apply)
+  + security_group_id   = (known after apply)
+  + ssm_parameter_names = [
+      + "/adnan-tf-assignment/staging/app_name",
+      + "/adnan-tf-assignment/staging/feature_flag",
+      + "/adnan-tf-assignment/staging/log_level",
+    ]
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: staging.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "staging.tfplan"
