@@ -1,0 +1,2 @@
+All plugins are already installed
+tflint exit code: 0
