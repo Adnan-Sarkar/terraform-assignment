@@ -1,0 +1,62 @@
+aws_cloudwatch_log_group.app["app"]: Creating...
+aws_ssm_parameter.app["log_level"]: Creating...
+aws_ssm_parameter.app["feature_flag"]: Creating...
+aws_iam_role.app[0]: Creating...
+aws_dynamodb_table.config[0]: Creating...
+aws_ssm_parameter.app["app_name"]: Creating...
+aws_cloudwatch_log_group.app["worker"]: Creating...
+aws_security_group.app: Creating...
+aws_s3_bucket.app[0]: Creating...
+aws_iam_role.app[0]: Creation complete after 2s [id=bjit-adnan-tf-assignment-dev-app-role-apse2]
+aws_cloudwatch_log_group.app["worker"]: Creation complete after 3s [id=bjit-adnan-tf-assignment-dev-worker-logs-apse2]
+aws_cloudwatch_log_group.app["app"]: Creation complete after 3s [id=bjit-adnan-tf-assignment-dev-app-logs-apse2]
+aws_ssm_parameter.app["app_name"]: Creation complete after 3s [id=/adnan-tf-assignment/dev/app_name]
+aws_ssm_parameter.app["feature_flag"]: Creation complete after 3s [id=/adnan-tf-assignment/dev/feature_flag]
+aws_ssm_parameter.app["log_level"]: Creation complete after 3s [id=/adnan-tf-assignment/dev/log_level]
+aws_security_group.app: Creation complete after 6s [id=sg-0ef428be93e8ba91e]
+aws_s3_bucket.app[0]: Creation complete after 9s [id=bjit-adnan-tf-assignment-dev-app-bucket-apse2]
+aws_s3_bucket_public_access_block.app: Creating...
+aws_s3_bucket_ownership_controls.app: Creating...
+aws_s3_bucket_server_side_encryption_configuration.app: Creating...
+aws_s3_bucket_lifecycle_configuration.app[0]: Creating...
+aws_dynamodb_table.config[0]: Still creating... [00m10s elapsed]
+aws_s3_bucket_public_access_block.app: Creation complete after 2s [id=bjit-adnan-tf-assignment-dev-app-bucket-apse2]
+aws_s3_bucket_ownership_controls.app: Creation complete after 2s [id=bjit-adnan-tf-assignment-dev-app-bucket-apse2]
+aws_s3_bucket_server_side_encryption_configuration.app: Creation complete after 2s [id=bjit-adnan-tf-assignment-dev-app-bucket-apse2]
+aws_dynamodb_table.config[0]: Creation complete after 12s [id=bjit-adnan-tf-assignment-dev-config-table-apse2]
+data.aws_iam_policy_document.app_access[0]: Reading...
+data.aws_iam_policy_document.app_access[0]: Read complete after 0s [id=3286016579]
+aws_iam_policy.app[0]: Creating...
+aws_iam_policy.app[0]: Creation complete after 1s [id=arn:aws:iam::715010567089:policy/bjit-adnan-tf-assignment-dev-app-policy-apse2]
+aws_iam_role_policy_attachment.app[0]: Creating...
+aws_iam_role_policy_attachment.app[0]: Creation complete after 0s [id=bjit-adnan-tf-assignment-dev-app-role-apse2-20261027055951116500000001]
+aws_s3_bucket_lifecycle_configuration.app[0]: Still creating... [00m10s elapsed]
+aws_s3_bucket_lifecycle_configuration.app[0]: Still creating... [00m20s elapsed]
+aws_s3_bucket_lifecycle_configuration.app[0]: Still creating... [00m30s elapsed]
+aws_s3_bucket_lifecycle_configuration.app[0]: Still creating... [00m40s elapsed]
+aws_s3_bucket_lifecycle_configuration.app[0]: Still creating... [00m50s elapsed]
+aws_s3_bucket_lifecycle_configuration.app[0]: Still creating... [01m00s elapsed]
+aws_s3_bucket_lifecycle_configuration.app[0]: Creation complete after 1m1s [id=bjit-adnan-tf-assignment-dev-app-bucket-apse2]
+
+Apply complete! Resources: 15 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+dynamodb_table_arn = "arn:aws:dynamodb:ap-southeast-2:715010567089:table/bjit-adnan-tf-assignment-dev-config-table-apse2"
+dynamodb_table_name = "bjit-adnan-tf-assignment-dev-config-table-apse2"
+environment = "dev"
+iam_role_arn = "arn:aws:iam::715010567089:role/bjit-adnan-tf-assignment-dev-app-role-apse2"
+iam_role_name = "bjit-adnan-tf-assignment-dev-app-role-apse2"
+log_group_names = {
+  "app" = "bjit-adnan-tf-assignment-dev-app-logs-apse2"
+  "worker" = "bjit-adnan-tf-assignment-dev-worker-logs-apse2"
+}
+name_prefix = "bjit-adnan-tf-assignment-dev"
+s3_bucket_arn = "arn:aws:s3:::bjit-adnan-tf-assignment-dev-app-bucket-apse2"
+s3_bucket_name = "bjit-adnan-tf-assignment-dev-app-bucket-apse2"
+security_group_id = "sg-0ef428be93e8ba91e"
+ssm_parameter_names = [
+  "/adnan-tf-assignment/dev/app_name",
+  "/adnan-tf-assignment/dev/feature_flag",
+  "/adnan-tf-assignment/dev/log_level",
+]
