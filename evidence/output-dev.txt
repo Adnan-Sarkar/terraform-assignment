@@ -1,0 +1,18 @@
+dynamodb_table_arn = "arn:aws:dynamodb:ap-southeast-2:715010567089:table/bjit-adnan-tf-assignment-dev-config-table-apse2"
+dynamodb_table_name = "bjit-adnan-tf-assignment-dev-config-table-apse2"
+environment = "dev"
+iam_role_arn = "arn:aws:iam::715010567089:role/bjit-adnan-tf-assignment-dev-app-role-apse2"
+iam_role_name = "bjit-adnan-tf-assignment-dev-app-role-apse2"
+log_group_names = {
+  "app" = "bjit-adnan-tf-assignment-dev-app-logs-apse2"
+  "worker" = "bjit-adnan-tf-assignment-dev-worker-logs-apse2"
+}
+name_prefix = "bjit-adnan-tf-assignment-dev"
+s3_bucket_arn = "arn:aws:s3:::bjit-adnan-tf-assignment-dev-app-bucket-apse2"
+s3_bucket_name = "bjit-adnan-tf-assignment-dev-app-bucket-apse2"
+security_group_id = "sg-0ef428be93e8ba91e"
+ssm_parameter_names = [
+  "/adnan-tf-assignment/dev/app_name",
+  "/adnan-tf-assignment/dev/feature_flag",
+  "/adnan-tf-assignment/dev/log_level",
+]
