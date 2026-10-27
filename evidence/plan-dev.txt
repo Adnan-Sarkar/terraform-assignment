@@ -1,6 +1,6 @@
 data.aws_caller_identity.current: Reading...
 data.aws_vpc.default: Reading...
-data.aws_caller_identity.current: Read complete after 0s [id=715010567089]
+data.aws_caller_identity.current: Read complete after 1s [id=715010567089]
 data.aws_vpc.default: Read complete after 3s [id=vpc-01685c4ecd05781cd]
 
 Terraform used the selected providers to generate the following execution
@@ -8,6 +8,60 @@ plan. Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
+
+  # aws_cloudwatch_log_group.app["app"] will be created
+  + resource "aws_cloudwatch_log_group" "app" {
+      + arn               = (known after apply)
+      + id                = (known after apply)
+      + log_group_class   = (known after apply)
+      + name              = "bjit-adnan-tf-assignment-dev-app-logs-apse2"
+      + name_prefix       = (known after apply)
+      + retention_in_days = 7
+      + skip_destroy      = false
+      + tags              = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all          = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+    }
+
+  # aws_cloudwatch_log_group.app["worker"] will be created
+  + resource "aws_cloudwatch_log_group" "app" {
+      + arn               = (known after apply)
+      + id                = (known after apply)
+      + log_group_class   = (known after apply)
+      + name              = "bjit-adnan-tf-assignment-dev-worker-logs-apse2"
+      + name_prefix       = (known after apply)
+      + retention_in_days = 7
+      + skip_destroy      = false
+      + tags              = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all          = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+    }
 
   # aws_dynamodb_table.config[0] will be created
   + resource "aws_dynamodb_table" "config" {
@@ -164,7 +218,103 @@ Terraform will perform the following actions:
         }
     }
 
-Plan: 6 to add, 0 to change, 0 to destroy.
+  # aws_ssm_parameter.app["app_name"] will be created
+  + resource "aws_ssm_parameter" "app" {
+      + arn            = (known after apply)
+      + data_type      = (known after apply)
+      + has_value_wo   = (known after apply)
+      + id             = (known after apply)
+      + insecure_value = (known after apply)
+      + key_id         = (known after apply)
+      + name           = "/adnan-tf-assignment/dev/app_name"
+      + tags           = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all       = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tier           = "Standard"
+      + type           = "String"
+      + value          = (sensitive value)
+      + value_wo       = (write-only attribute)
+      + version        = (known after apply)
+    }
+
+  # aws_ssm_parameter.app["feature_flag"] will be created
+  + resource "aws_ssm_parameter" "app" {
+      + arn            = (known after apply)
+      + data_type      = (known after apply)
+      + has_value_wo   = (known after apply)
+      + id             = (known after apply)
+      + insecure_value = (known after apply)
+      + key_id         = (known after apply)
+      + name           = "/adnan-tf-assignment/dev/feature_flag"
+      + tags           = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all       = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tier           = "Standard"
+      + type           = "String"
+      + value          = (sensitive value)
+      + value_wo       = (write-only attribute)
+      + version        = (known after apply)
+    }
+
+  # aws_ssm_parameter.app["log_level"] will be created
+  + resource "aws_ssm_parameter" "app" {
+      + arn            = (known after apply)
+      + data_type      = (known after apply)
+      + has_value_wo   = (known after apply)
+      + id             = (known after apply)
+      + insecure_value = (known after apply)
+      + key_id         = (known after apply)
+      + name           = "/adnan-tf-assignment/dev/log_level"
+      + tags           = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tags_all       = {
+          + "Company"     = "bjit"
+          + "CostCenter"  = "training"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "Adnan"
+          + "Project"     = "adnan-tf-assignment"
+        }
+      + tier           = "Standard"
+      + type           = "String"
+      + value          = (sensitive value)
+      + value_wo       = (write-only attribute)
+      + version        = (known after apply)
+    }
+
+Plan: 11 to add, 0 to change, 0 to destroy.
 
 ─────────────────────────────────────────────────────────────────────────────
 
